@@ -1,0 +1,6 @@
+-criar header - DONE.
+-criar capa introdução ao site - DONE. - transformar imagens fakes em imagens reais - DONE.
+-criar lista de imagens - DONE
+-criar slide show(?) - ON GOING...
+-criar player de música
+

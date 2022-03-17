@@ -1,0 +1,87 @@
+consertei a parada, agora falta tranformar em link, botar o nome e usuário que enviou a imagem, e por fim, começar o player de música na próxima página, além do login que ainda não existe.
+
+import { Box, BoxProps, Flex, Image, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Poppins } from "../../../utils/consts";
+import React, { useMemo } from "react";
+import img1 from '../../../assets/teste1.jpg'
+import img2 from '../../../assets/teste2.jpg'
+import img3 from '../../../assets/teste3.jpg'
+import img4 from '../../../assets/teste4.jpg'
+import img5 from '../../../assets/teste7.jpg'
+import img6 from '../../../assets/teste6.jpg'
+import img7 from '../../../assets/teste5.jpg'
+import img8 from '../../../assets/teste9.jpg'
+import img9 from  '../../../assets/teste8.jpg'
+import { receiveMessageOnPort } from "worker_threads";
+
+interface ImageDivProps extends BoxProps{
+    img: StaticImageData,
+    key: any;
+}
+
+export default function Galeria(){
+    //ver pinterest, tem 2 formas. Usando calculos, ou fazendo divs ou colunas que possuam stacks...
+    const numCols = useBreakpointValue({base: 1, md: 2, lg: 3, xl: 4, '2xl': 5, '3xl': 6})
+    const ImageDiv = ({img, key, ...rest}: ImageDivProps) => { return <Box {...rest}><Image borderRadius={4} alt='arte' title='arte em imagem' key={key} src={img.src} /></Box>}
+    const images = [ img1, img2, img3, img4, img5, img6, img7, img8, img9 ]
+    const ref = React.useRef<any>(null);
+    const memoizedPutImages = useMemo(()=> { return putImages() }, [ref.current, numCols])
+
+    function putImages(){
+        let imgs : JSX.Element[] = [];
+        
+        if(numCols && ref && ref.current){
+            let count = 0, 
+            div = ref.current,
+            rows = Math.floor(images.length/numCols),
+            width = div.offsetWidth/numCols - 16,
+            latestHeight = new Array<number>(numCols);
+            
+            for(let row = 0; row < rows; row++){                
+
+                for(let col = 0; col < numCols; col++){
+
+                    latestHeight[col] = (row == 0)? 0 : latestHeight[col] + images[count-numCols].height*(width/images[count-numCols].width) + 16;                                        
+
+                    let style: BoxProps = { 
+                        p: '0 8px 16px 8px',
+                        w: `${width}px`,
+                        transform: `translateX(${(col==0) ? 0: (width + 16) * col}px) 
+                        translateY(${latestHeight[col]}px)`,
+                        top: 0,
+                        left: 0,
+                        borderRadius: 8,
+                        margin: '0 !important',
+                        role: 'listitem',
+                        display: 'inline-flex'
+                    }
+
+                    imgs.push(ImageDiv({ img: images[count], key: count, ...style} as ImageDivProps) )
+                    
+                    count++;
+                }
+            }
+
+            console.log(latestHeight)
+        }
+
+        
+
+        return imgs;
+    }    
+
+    return(
+        <Stack py='6' px='4'>
+            <Flex>
+                <Text fontSize='4xl' textTransform='uppercase' fontFamily={Poppins}>Últimas adicionadas</Text>
+            </Flex>
+
+            <Flex bg="gray.400" w="100%" justifyContent="center">
+                <Box id="image-portraits" w={["100%", "492px", "768px","1044px","1280px","1532px"]} display="block" bg="blue.300" role="list" position="relative" ref={ref}>
+                    {memoizedPutImages}
+                </Box>
+            </Flex>
+        </Stack>
+    )
+}
+
