@@ -1,5 +1,5 @@
 import { Box, BoxProps, Flex, Stack, Text, useBreakpointValue } from "@chakra-ui/react";
-import { Poppins } from "../../../utils/consts";
+import { Poppins, WidthBreakpoints } from "../../../utils/consts";
 import React, { useEffect, useMemo, useState } from "react";
 import img1 from '../../../assets/teste1.jpg'
 import img2 from '../../../assets/teste2.jpg'
@@ -14,9 +14,8 @@ import img10 from '../../../assets/teste10.jpg'
 import ImagePortrait from "./ImagePortrait";
 
 export default function Galeria(){
-    //ver pinterest, tem 2 formas. Usando calculos, ou fazendo divs ou colunas que possuam stacks...
     const numCols = useBreakpointValue({base: 1, sm: 1, md: 2, lg: 3, xl: 4, '2xl': 5, '3xl': 6})    
-    const images = [ img1, img2, img3, img4, img5, img6, img7, img8, img9, img10 ]
+    const images = [ img1, img2, img3, img4, img5, img6, img7, img8, img9, img10 ] //simulando o retorno de uma api com o array de imagens
     const ref = React.useRef<any>(null);
     const memoizedPutImages = useMemo(()=> { return putImages() }, [ref.current, numCols])    
     const [DivStyle, setDivStyle] = useState({} as React.CSSProperties)
@@ -54,15 +53,14 @@ export default function Galeria(){
     }    
 
     return(
-        <Stack py='6' px='4'>
-            <Flex>
-                <Text fontSize='4xl' textTransform='uppercase' fontFamily={Poppins}>Últimas adicionadas</Text>
-            </Flex>
+        <Stack py='6' px='4'>            
+            <Flex w="100%" alignItems="center" flexDir="column" py="4">        
 
-            <Flex w="100%" justifyContent="center">
+                <Text fontSize='4xl' mb="4" textTransform='uppercase' fontFamily={Poppins}>Últimas adicionadas</Text>
+            
                 <Box
                   id="image-portraits"
-                  w={["100%", "492px", "768px", "1044px", "1280px", "1532px"]}
+                  w={WidthBreakpoints}
                   style={DivStyle}
                   role="list"
                   height="max-content"

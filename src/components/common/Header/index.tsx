@@ -1,4 +1,4 @@
-import { Avatar, Box, Flex, HStack, Icon, Text } from "@chakra-ui/react"
+import { Avatar, Box, Flex, HStack, Icon, Link, Text } from "@chakra-ui/react"
 import { BsImages, BsHeadphones } from 'react-icons/bs'
 import { FaUserCircle } from 'react-icons/fa'
 import { Poppins, Shadows } from "../../../utils/consts"
@@ -13,12 +13,12 @@ export default function Header(){
     const style = (isMobile)? Style.Small.Header : Style.Normal.Header;
 
     return(
-        <Flex position='fixed' as='header' top='0' w='100%' h={ConstStyle.headerHeight} zIndex='100' justifyContent='space-between' alignItems='center' bg='purple.500' px={style.PaddingX}>
+        <Flex position='fixed' as='header' top='0' w='100%' h={ConstStyle.headerHeight} zIndex='100' justifyContent='space-between' alignItems='center' bg='purple.500' px={style.PaddingX}>            
             <HStack spacing={style.LogoSpacing}>
-                <Box h='fit-content'>
+                <Link style={{height:'fit-content'}} href="/">
                     <Icon as={BsImages} boxSize={style.IconImgBoxSize} position='absolute' mt={style.IconImgMarginTop} ml={style.IconImgMarginLeft} color='black'/>
-                    <Icon as={BsHeadphones} boxSize={style.IconHeadphoneBoxSize} color='gray.300'/>
-                </Box>
+                    <Icon as={BsHeadphones} boxSize={style.IconHeadphoneBoxSize} color='gray.200'/>
+                </Link>
 
                 <HeaderSearch isMobile={isMobile}/>
             </HStack>

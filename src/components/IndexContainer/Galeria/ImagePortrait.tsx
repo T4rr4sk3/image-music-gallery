@@ -21,8 +21,8 @@ export default function ImagePortrait({ id, src, hasAlbum = false, ...rest }: Im
     }
 
     return(
-        <Box {...rest} p='0 8px 8px 8px'>
-            <Link href="#">
+        <Box {...rest} p='0 8px 10px 8px'>
+            <Link href="/image-show">
                 <Box position="relative" onMouseEnter={() => { setOverlay(true) }} transition=".3s" onMouseLeave={() => { setOverlay(false) }} borderRadius={4}>
                     <Box bg="linear-gradient(to bottom, transparent, black)" w="100%" position="absolute" cursor="pointer" height="100%" opacity={0} ref={overlay} borderRadius="inherit">
                         <Icon as={hasAlbum? BsImages: BsImage} boxSize="24px" position="absolute" right="16px" bottom="12px" color="white" />

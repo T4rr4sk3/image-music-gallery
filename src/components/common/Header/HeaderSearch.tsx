@@ -32,17 +32,17 @@ export default function HeaderSearch({ isMobile }: HeaderSearchProps) {
             />
 
             <Flex
-                as='button'
-                type='submit'
-                form={idForm}
-                borderLeft='1px solid gray'
-                bg='gray.300'
-                borderRightRadius='8'
-                h='100%'             
-                w='15%'
-                justifyContent='center'
-                _hover={{ bg: 'gray.400' }}
-                alignItems='center'
+              as='button'
+              type='submit'
+              form={idForm}
+              borderLeft='1px solid gray'
+              bg='gray.200'
+              borderRightRadius='8'
+              h='100%'             
+              w='15%'
+              justifyContent='center'
+              _hover={{ bg: 'gray.100' }}
+              alignItems='center'
             >
 
                 <Icon as={FiSearch} boxSize={style.boxSize} />
