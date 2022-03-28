@@ -4,7 +4,7 @@ import Slideshow from "../components/Slideshow";
 
 const ImageShow : NextPage = () => {
     return(
-        <BaseLayout1 bg="rgba(0,0,0,0.65)" minH="100vh">
+        <BaseLayout1 bg="gray.800" overflowX="hidden">
             <Slideshow />
         </BaseLayout1>
     )

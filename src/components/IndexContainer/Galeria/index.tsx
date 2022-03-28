@@ -31,7 +31,7 @@ export default function Galeria(){
       })}, [numCols])
 
     function putImages(){
-        let imgs : JSX.Element[] = [];
+        let imgs : JSX.Element[] = [] //imagens vão vir como props.
         
         if(numCols && ref && ref.current){            
             let div = ref.current,            
