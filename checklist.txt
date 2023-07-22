@@ -1,0 +1,25 @@
+[ ] Criar Header
+    [ ] Header Lado Direito
+        [ ] - Quando logado, imagem do user, com algum tooltip pra nome (?) e um botão de sair
+        [ ] - Quando não logado, dois botões, um com register (criar conta), outro com login
+
+    [ ] Header Lado esquerdo
+        [ ] - Logo
+        [ ] - Menu lateral esquerdo retrátil (difícil)
+            [ ] - Foto do user + links para logar ou cadastrar-se
+            [ ] - NavLinks
+            [ ] - Footer com Discord, linkedin e instagram
+
+[ ] Criar Footer, com o nome dos criadores, copyright e ano
+
+[ ] Main Layout, com Header, Footer e o main.
+
+[ ] HOME
+    [ ] Pesquisa
+        [ ] Fundo gradiente
+        [ ] Mini galeria (imagem ou divs)
+        [ ] Input com search
+    
+    [ ] Galeria
+        [ ] grid com imagens responsiva?
+        [ ] imagens com hover

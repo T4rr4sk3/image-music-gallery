@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+import colors from 'tailwindcss/colors'
+
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -7,12 +10,19 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-    },
+      colors: {
+        "body-text": {
+          DEFAULT: colors.zinc[200],
+          light: colors.zinc[200],
+          dark: colors.zinc[800]
+        },
+        header: {
+          DEFAULT: colors.zinc[800],
+          light: colors.zinc[800],
+          dark: colors.zinc[200]
+        }
+      }
+    }
   },
   plugins: [],
 }
